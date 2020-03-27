@@ -1,6 +1,6 @@
 # FC-DCNN
-Implementation of lightweight fully-convolutional densely connected neural network method for disparity estimation.
-This method has been submitted to **ICPR 2020** conference and is currently being peer-reviewed.
+Implementation of our lightweight fully-convolutional densely connected neural network method for disparity estimation.
+This method has been submitted to the **ICPR 2020** conference and is currently being peer-reviewed.
 
 Upon acceptance this repository will contain:
 
