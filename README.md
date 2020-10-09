@@ -13,6 +13,7 @@ An implementation of a lightweight fully-convolutional densely connected neural 
 This method has been submitted to the **ICPR 2020** conference and is currently being peer-reviewed.
 A demo of this network is available online. 
 [colab](https://colab.research.google.com/drive/1i5k-YTCsmQC8IIURBh802oKeyZP_ZSHG)
+
 The whole project is in pure python 3.6 with the exception of the jupyter-notebook inference script. For performace reasons the post-processing is done in cython which can be installed via: 
 
   $ pip install Cython
