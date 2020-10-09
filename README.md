@@ -10,15 +10,8 @@ Dominik Hirner, Friedrich Fraundorfer
 
 Implementation of our lightweight fully-convolutional densely connected neural network method for disparity estimation.
 This method has been submitted to the **ICPR 2020** conference and is currently being peer-reviewed.
-
-Upon acceptance this repository will contain:
-
-* Python3 and pytorch 1.2.0 implementation of our FC-DCNN network
-* trained weights for:
-  * Kitti
-  * Middlebury
-  * ETH3D 
-* python3 script for the full post-processing pipeline as described in our paper
+A demo of this network is available online. 
+[colab](https://colab.research.google.com/drive/1i5k-YTCsmQC8IIURBh802oKeyZP_ZSHG)
 
 The network was trained and tested on a GeForce RTX 2080 with 11GB of RAM.
 The code is released under the BSD 2-Clause license. Please cite our paper (link) if you use code from this repository in your work.
