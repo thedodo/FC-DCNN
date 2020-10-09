@@ -3,7 +3,7 @@
 ![cuda](https://img.shields.io/badge/cuda-v10.0-green.svg?style=plastic)
 ![cudnn](https://img.shields.io/badge/cudnn-v7.4.2-green.svg?style=plastic)
 ![python](https://img.shields.io/badge/python-v3.6.10-green.svg?style=plastic)
-![demo](https://img.shields.io/badge/colab-green.svg?style=plastic)
+![colab](https://img.shields.io/badge/online-demo-green.svg?style=plastic)
 
 ![Teaser image](./docs/Header.png)
 ##### A densely connected neural network for stereo estimation
