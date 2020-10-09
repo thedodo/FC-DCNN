@@ -16,7 +16,7 @@ A demo of this network is available online.
 
 The whole project is in pure python 3.6 with the exception of the jupyter-notebook inference script. For performace reasons the post-processing is done in cython which can be installed via: 
 
-  $ pip install Cython
+ ```pip install Cython ```
 
 This repository contains
 
