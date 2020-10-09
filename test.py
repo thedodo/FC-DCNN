@@ -329,15 +329,11 @@ def LR_Check(first_output, second_output):
 
 
 def FillIncons(mask, disp):
-
-    
         
     w = mask.shape[1]
     h = mask.shape[0]
-    
-    
+     
     #if whole line is nan => fill with 0
-    
     print('Update inconsistent points...')
    
     #find a way to not iterate over image???
@@ -459,10 +455,8 @@ def FillIncons(mask, disp):
 
                     fill = np.median([left,right,above,under,r_above,l_above,r_under,l_under])
 
-                    disp[height,width] = fill
-                    
-    print('Done')
-                    
+                    disp[height,width] = fill                
+    print('Done')              
     return disp
 
 
