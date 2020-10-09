@@ -41,4 +41,22 @@ The code is released under the BSD 2-Clause license. Please cite our paper (link
 [Kitti](https://drive.google.com/file/d/1Nce9yJeAs7u8Y1GpbJpgzP_RbLg9S3Rs/view?usp=sharing) |
 [ETH3D](https://drive.google.com/file/d/19QxmKWHNgNnjOUFBPnVgGG3r3mkHY1nW/view?usp=sharing) |
 
+## Usage
+### Inference 
+If you want to do inference on any rectified image-pair call the *test.py* function from the root of this repository as follows: 
+
+ ```python test.py path/to/weight path/to/left_im.png /path/to/right_im.png max_disp /path/to/out/out_name```
+#### Example on Middlebury
+Download the Middlebury weights from the link above and put it in the *weights* folder in the root of this repository. Then copy and paste the following: 
+
+```python test.py weights/mb example/im0.png example/im1.png 128 teddy```
+
+If everything went ok this should produce the following output: 
+
+- teddy.pfm: filtered disparity output of the network
+- teddybilat_and_med_mask.png: calculated foreground/background mask (see paper)
+- teddy_s.pfm: disparity map with removed inconsistencies
+- teddy_filled.pfm: disparity with updated inconsistencies (see paper)
+
+
 **&#9733;&#9733;&#9733; New version of FC-DCNN with improved EPE and additional trained weights will be made available at [https://github.com/thedodo/fc-dcnn2](https://github.com/thedodo/fc-dcnn2) &#9733;&#9733;&#9733;**
