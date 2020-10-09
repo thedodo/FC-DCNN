@@ -42,6 +42,7 @@ If you want to do inference on any rectified image-pair call the *test.py* funct
 Download the Middlebury weights from the link above and put it in the *weights* folder in the root of this repository. Then copy and paste the following: 
 
 ```python test.py weights/mb example/im0.png example/im1.png 128 teddy```
+
 *TODO: more graceful error-handling for parameter*
 
 If everything went ok this should produce the following output: 
