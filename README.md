@@ -24,6 +24,8 @@ This repository contains
 - pure python3.6 code for training and inference
 - trained weights for many publicly available datasets
 
+**&#9733;&#9733;&#9733; New version of FC-DCNN with improved EPE and additional trained weights is available at [https://github.com/thedodo/fc-dcnn2](https://github.com/NVlabs/stylegan2-ada) &#9733;&#9733;&#9733;**
+
 The network was trained and tested on a GeForce RTX 2080 with 11GB of RAM.
 The code is released under the BSD 2-Clause license. Please cite our paper (link) if you use code from this repository in your work.
 
