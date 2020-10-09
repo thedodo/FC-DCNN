@@ -1,6 +1,6 @@
 # FC-DCNN 
-
-## A densely connected neural network for stereo estimation
+![Teaser image](./docs/Header.png)
+##### A densely connected neural network for stereo estimation
 Dominik Hirner, Friedrich Fraundorfer
 
 Implementation of our lightweight fully-convolutional densely connected neural network method for disparity estimation.
