@@ -14,6 +14,14 @@ This method has been submitted to the **ICPR 2020** conference and is currently 
 A demo of this network is available online. 
 [colab](https://colab.research.google.com/drive/1i5k-YTCsmQC8IIURBh802oKeyZP_ZSHG)
 
+# TODO:
+
+- Update train notebook and python script to create patches during training (not load npy!)
+- do not use cython for train/test python!
+- copy fillincons from new project (threshold!)
+- !!TEST AGAIN!!
+
+
 The whole project is in pure python 3.6 with the exception of the jupyter-notebook inference script. For performace reasons the post-processing is done in cython which can be installed via: 
 
  ```pip install Cython ```
