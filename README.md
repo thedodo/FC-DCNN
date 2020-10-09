@@ -17,7 +17,7 @@ A demo of this network is available online.
 # TODO:
 
 - Update train notebook and python script to create patches during training (not load npy!)
-- do not use cython for train/test python!
+-update test with addparam?
 - copy fillincons from new project (threshold!)
 - !!TEST AGAIN!!
 
