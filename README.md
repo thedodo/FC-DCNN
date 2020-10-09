@@ -25,3 +25,9 @@ This repository contains
 
 The network was trained and tested on a GeForce RTX 2080 with 11GB of RAM.
 The code is released under the BSD 2-Clause license. Please cite our paper (link) if you use code from this repository in your work.
+
+## Trained weights
+
+[Middlebury](https://drive.google.com/file/d/1DiuY47dnM4PUgzDg8SQZyZUyC09pVoDO/view?usp=sharing)
+[Kitti](https://drive.google.com/file/d/1Nce9yJeAs7u8Y1GpbJpgzP_RbLg9S3Rs/view?usp=sharing)
+[ETH3D](https://drive.google.com/file/d/19QxmKWHNgNnjOUFBPnVgGG3r3mkHY1nW/view?usp=sharing)
