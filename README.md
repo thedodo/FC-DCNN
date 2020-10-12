@@ -48,7 +48,7 @@ Download the Middlebury weights from the link above and put it in the *weights* 
 If everything went ok this should produce the following output: 
 
 - motorcycle.pfm: filtered disparity output of the network
-<img src="./docs/motor_NW.png" width="10%" height="10%";"/>
+<img src="./docs/motor_NW.png" width=10% height=10%;"/>
 - motorcycle_and_med_mask.png: calculated foreground/background mask (see paper)
 <img src="./docs/motorcyclebilat_and_med_mask.png" style="width: 10%;"/>
 - teddy_s.pfm: disparity map with removed inconsistencies
