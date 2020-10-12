@@ -6,22 +6,21 @@
 ![colab](https://img.shields.io/badge/online-demo-green.svg?style=plastic)
 
 ![Teaser image](./docs/Header.png)
-##### A densely connected neural network for stereo estimation
+#### A densely connected neural network for stereo estimation
 Dominik Hirner, Friedrich Fraundorfer
 
 An implementation of a lightweight fully-convolutional densely connected neural network method for disparity estimation.
-This method has been published at the **ICPR 2020** conference.
-A demo of this network is available online. 
-[colab](https://colab.research.google.com/drive/1i5k-YTCsmQC8IIURBh802oKeyZP_ZSHG)
+This method has been accepted and will be published at the **ICPR 2020** conference.
 
-The whole project is in pure python 3.6 with the exception of the jupyter-notebook inference script. For performace reasons the post-processing is done in cython which can be installed via: 
+A demo of this network is available online in Google Colab. 
+[Demo](https://colab.research.google.com/drive/1i5k-YTCsmQC8IIURBh802oKeyZP_ZSHG)
 
- ```pip install Cython ```
+The whole project is in pure python 3.6. For all required packages see requirements.txt
 
 This repository contains
 
 - jupyter notebooks for training and inference of disparity via a stereo-pair
-- pure python3.6 code for training and inference
+- python3.6 code for training and inference
 - trained weights for many publicly available datasets
 
 The network was trained and tested on a GeForce RTX 2080 with 11GB of RAM.
