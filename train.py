@@ -39,8 +39,6 @@ dataset = config['PARAM']['dataset']
 model_name = config['PARAM']['model_name']
 
 #folder with training data
-# 
-
 input_folder = config['PARAM']['input_folder']
 batch_size = int(config['PARAM']['batch_size'])
 nr_batches = int(config['PARAM']['nr_batches'])
@@ -65,6 +63,9 @@ print("Model name: " ,model_name)
 print("Input folder: " ,input_folder)
 print("Batch-size: " ,batch_size)
 print("Number of Epchs: " ,nr_epochs)
+print("Patch size: ", patch_size)
+print("r_low: ", r_low)
+print("r_high", r_high)
 print("#Feature-maps per layer: " ,num_conv_feature_maps)
 print("Save weights every epochs: " ,save_weights)
 
@@ -100,21 +101,160 @@ def loadMB():
 
 def loadETH3D():
     
-    #TODO
-    left_patches_whole = []
-    right_pos_patches_whole = []
-    right_neg_patches_whole = []
+    left_filelist = glob.glob(input_folder + '*/im0.png')
+    right_filelist = glob.glob(input_folder + '*/im1.png')
+    disp_filelist = glob.glob(input_folder + '*/disp0GT.pfm')
     
-    return left_patches_whole, right_pos_patches_whole, right_neg_patches_whole
-
-def loadKitti():
+    left_filelist = sorted(left_filelist)
+    right_filelist = sorted(right_filelist)
+    disp_filelist = sorted(disp_filelist)
     
-    #TODO
-    left_patches_whole = []
-    right_pos_patches_whole = []
-    right_neg_patches_whole = []    
+    left_list = []
+    right_list = []
+    disp_list = []
+    
+    for i in range(0,len(left_filelist)):
+        
+        cur_left = cv2.imread(left_filelist[i])
+        cur_right = cv2.imread(right_filelist[i])
+        cur_disp,_ = readPFM(disp_filelist[i])
+        
+        left_list.append(cur_left)
+        right_list.append(cur_right)
+        disp_list.append(cur_disp)
+        
+    return left_list, right_list, disp_list
 
-    return left_patches_whole, right_pos_patches_whole, right_neg_patches_whole
+
+def loadKitti2012():
+
+    left_filelist = glob.glob(input_folder + 'colored_0/*.png')
+    right_filelist = glob.glob(input_folder + 'colored_1/*.png')
+    disp_filelist = glob.glob(input_folder + 'disp_noc/*.png')
+    
+    left_filelist = sorted(left_filelist)
+    right_filelist = sorted(right_filelist)
+    disp_filelist = sorted(disp_filelist)
+
+    left_elem_list = []
+    for left_im in left_filelist:
+
+        left_im_el = left_im.split('/')[-1]
+        left_elem_list.append(left_im_el)
+
+    left_elem_list = sorted(left_elem_list)
+
+
+    right_elem_list = []
+    for right_im in right_filelist:
+
+        right_im_el = right_im.split('/')[-1]
+        right_elem_list.append(right_im_el)
+
+    right_elem_list = sorted(right_elem_list)
+
+
+
+    gt_elem_list = []
+    for gt_im in disp_filelist:
+
+        gt_im_el = gt_im.split('/')[-1]
+        gt_elem_list.append(gt_im_el)
+
+    gt_elem_list = sorted(gt_elem_list)
+
+
+    inters_list = set(left_elem_list) & set(right_elem_list) & set(gt_elem_list)
+   
+    inters_list = list(inters_list)
+    left_list = []
+    right_list = []
+    disp_list = []
+    
+    for i in range(0,len(inters_list)):
+        
+        left_im = input_folder + 'colored_0/' + inters_list[i]
+        right_im = input_folder + 'colored_1/' + inters_list[i]
+        disp_im =  input_folder + 'disp_noc/' + inters_list[i] 
+       
+        cur_left = cv2.imread(left_im)
+        cur_right = cv2.imread(right_im)
+        cur_disp = cv2.imread(disp_im)
+        
+        cur_disp = np.mean(cur_disp,axis=2) 
+        
+        left_list.append(cur_left)
+        right_list.append(cur_right)
+        disp_list.append(cur_disp)
+        
+    return left_list, right_list, disp_list
+
+
+def loadKitti2015():
+
+    left_filelist = glob.glob(input_folder + 'image_2/*.png')
+    right_filelist = glob.glob(input_folder + 'image_3/*.png')
+    disp_filelist = glob.glob(input_folder + 'disp_noc_0/*.png')
+    
+    left_filelist = sorted(left_filelist)
+    right_filelist = sorted(right_filelist)
+    disp_filelist = sorted(disp_filelist)
+
+    left_elem_list = []
+    for left_im in left_filelist:
+
+        left_im_el = left_im.split('/')[-1]
+        left_elem_list.append(left_im_el)
+
+    left_elem_list = sorted(left_elem_list)
+
+
+    right_elem_list = []
+    for right_im in right_filelist:
+
+        right_im_el = right_im.split('/')[-1]
+        right_elem_list.append(right_im_el)
+
+    right_elem_list = sorted(right_elem_list)
+
+
+
+    gt_elem_list = []
+    for gt_im in disp_filelist:
+
+        gt_im_el = gt_im.split('/')[-1]
+        gt_elem_list.append(gt_im_el)
+
+    gt_elem_list = sorted(gt_elem_list)
+
+
+    inters_list = set(left_elem_list) & set(right_elem_list) & set(gt_elem_list)
+   
+    inters_list = list(inters_list)
+    left_list = []
+    right_list = []
+    disp_list = []
+    
+    for i in range(0,len(inters_list)):
+        
+        left_im = input_folder + 'image_2/' + inters_list[i]
+        right_im = input_folder + 'image_3/' + inters_list[i]
+        disp_im =  input_folder + 'disp_noc_0/' + inters_list[i] 
+       
+        cur_left = cv2.imread(left_im)
+        cur_right = cv2.imread(right_im)
+        cur_disp = cv2.imread(disp_im)
+        
+        cur_disp = np.mean(cur_disp,axis=2) 
+        
+        left_list.append(cur_left)
+        right_list.append(cur_right)
+        disp_list.append(cur_disp)
+        
+    return left_list, right_list, disp_list
+
+
+
 
 
 class SiameseBranch(nn.Module):
@@ -308,12 +448,14 @@ def my_hinge_loss(s_p, s_n):
     loss = relu(-((s_p - s_n) - margin))
     return loss
 
-if(dataset == 'KITTI'):
-    left_patches_whole, right_pos_patches_whole, right_neg_patches_whole = loadKitti()
+if(dataset == 'KITTI2012'):
+    left_list, right_list, gt_list = loadKitti2012()
+if(dataset == 'KITTI2015'):
+    left_list, right_list, gt_list = loadKitti2015()
 if(dataset == 'MB'):
     left_list, right_list, gt_list = loadMB()    
 if(dataset == 'ETH'):
-    left_patches_whole, right_pos_patches_whole, right_neg_patches_whole = loadETH3D()
+    left_list, right_list, gt_list = loadETH3D()
     
     
 nr_samples = len(left_list)
