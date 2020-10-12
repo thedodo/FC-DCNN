@@ -341,8 +341,6 @@ def createCostVolRL(left_im,right_im,max_disp):
     print('Done')           
     return cost_volT
 
-
-#even further improve this by using pytorch!
 def LR_Check(first_output, second_output):  
     
     print('Check for inconsistencies...')
@@ -500,12 +498,7 @@ def TestImage(fn_left, fn_right, max_disp, im_to_save, filtered = True, lr_check
         cost_vol_filteredn = np.squeeze(cost_vol_filteredn.cpu().data.numpy())        
         
         disp = np.argmax(cost_vol_filteredn, axis=0) 
-        writePFM(im_to_save + '.pfm', disp.astype(np.float32), scale=1)        
-        
-        del cost_vol
-        del cost_vol_filteredn
-        torch.cuda.empty_cache()              
-        
+        writePFM(im_to_save + '.pfm', disp.astype(np.float32), scale=1)                
         if(lr_check):
             cost_vol_RL = createCostVolRL(left,right,max_disp)
             cost_vol_RL = filterCostVolMedian(cost_vol_RL)
