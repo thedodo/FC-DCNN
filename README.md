@@ -10,7 +10,7 @@
 Dominik Hirner, Friedrich Fraundorfer
 
 An implementation of a lightweight fully-convolutional densely connected neural network method for disparity estimation.
-This method has been submitted to the **ICPR 2020** conference and is currently being peer-reviewed.
+This method has been published at the **ICPR 2020** conference.
 A demo of this network is available online. 
 [colab](https://colab.research.google.com/drive/1i5k-YTCsmQC8IIURBh802oKeyZP_ZSHG)
 
