@@ -36,13 +36,11 @@ The code is released under the BSD 2-Clause license. Please cite our paper (link
 ### Inference 
 If you want to do inference on any rectified image-pair call the *test.py* function from the root of this repository as follows: 
 
- ```python test.py path/to/weight path/to/left_im.png /path/to/right_im.png max_disp /path/to/out/out_name```
+ ```python test.py --weights path/to/weight --left path/to/left_im.png --right /path/to/right_im.png --max_disp max_disp --out /path/to/out/out_name```
 #### Example on Middlebury
 Download the Middlebury weights from the link above and put it in the *weights* folder in the root of this repository. Then copy and paste the following: 
 
-```python test.py weights/mb example/im0.png example/im1.png 140 motorcycle```
-
-*TODO: more graceful error-handling for parameter*
+```python test.py --weights weights/mb --left example/im0.png --right example/im1.png --max_disp 140 --out motorcycle```
 
 If everything went ok this should produce the following output: 
 
