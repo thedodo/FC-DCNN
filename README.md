@@ -49,7 +49,7 @@ If everything went ok this should produce the following output:
 - motorcycle_and_med_mask.png: calculated foreground/background mask (see paper)
 ![Mask](./docs/motorcyclebilat_and_med_mask.png)
 - motorcycle_s.pfm: disparity map with removed inconsistencies
-![Disp_s](./docs/Motor_s.png)
+![Disp_s](./docs/motor_s.png)
 - motorcycle_filled.pfm: disparity with updated inconsistencies (see paper)
 ![Disp_filled](./docs/motor_filled.png)
 
