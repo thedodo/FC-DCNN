@@ -4,7 +4,6 @@ Institute for graphics and vision (ICG)
 University of Technology Graz, Austria
 e-mail: dominik.hirner@tugraz.at
 """
-
 import sys
 import numpy as np
 import cv2
@@ -18,7 +17,6 @@ from typing import Tuple
 import torch.nn.functional as F
 from guided_filter_pytorch.guided_filter import GuidedFilter
 import argparse
-
 
 def main():
     
@@ -79,6 +77,8 @@ class SiameseBranch(nn.Module):
         
         return x5
     
+Tensor = torch.cuda.FloatTensor
+cos = torch.nn.CosineSimilarity()
 
 branch = SiameseBranch()
 branch = branch.cuda()
@@ -151,12 +151,6 @@ def writePFM(file, image, scale=1):
     file.write('%f\n'.encode() % scale)
 
     image.tofile(file)
-    
-    
-    
-Tensor = torch.cuda.FloatTensor
-cos = torch.nn.CosineSimilarity()
-
 
 def _compute_binary_kernel(window_size: Tuple[int, int]) -> torch.Tensor:
     r"""Creates a binary kernel to extract the patches. If the window size
@@ -238,10 +232,10 @@ def filterCostVolMedian(cost_vol):
     cost_vol = cost_vol.unsqueeze(0)
     
     for disp in range(d):
-
         cost_vol[:,disp,:,:] = median_blur(cost_vol[:,disp,:,:].unsqueeze(0), (5,5))
         
     return torch.squeeze(cost_vol)
+
 
 def filterCostVolBilat(cost_vol,left):
     
@@ -261,13 +255,12 @@ def filterCostVolBilat(cost_vol,left):
 
         test = f(*inputs)
         cost_vol[disp,:,:] = np.squeeze(test)
-        
     return cost_vol
+
 
 def createCostVol(left_im,right_im,max_disp):
     
     print('Creating cost-volume....')
-
     left_im = np.mean(left_im, axis=2)
     right_im = np.mean(right_im, axis=2)
             
@@ -291,11 +284,9 @@ def createCostVol(left_im,right_im,max_disp):
 
         #0 => max_disp => one less disp!
         for disp in range(0,max_disp+1):
-
             if(disp == 0):
                 sim_score = cos(left_feat, right_feat)
-                cost_volT[disp,:,:] = torch.squeeze(sim_score)
-                
+                cost_volT[disp,:,:] = torch.squeeze(sim_score) 
             else:
                 right_shifted = torch.cuda.FloatTensor(1,f,h,w).fill_(0)                      
                 right_shift = torch.cuda.FloatTensor(1,f,h,disp).fill_(0)  
@@ -322,13 +313,11 @@ def createCostVolRL(left_im,right_im,max_disp):
     right_im = np.reshape(right_im, [1,1,a_h,a_w])
 
     with torch.no_grad():
-        
         left_imT = Variable(Tensor(left_im))
         right_imT = Variable(Tensor(right_im))
 
         left_feat = branch(left_imT)
         right_feat = branch(right_imT)
-
 
         _,f,h,w = left_feat.shape
         cost_vol = np.zeros((max_disp+1,a_h,a_w))
@@ -336,25 +325,19 @@ def createCostVolRL(left_im,right_im,max_disp):
         cost_volT = Variable(Tensor(cost_vol))
 
         for disp in range(0,max_disp+1):
-
             if(disp == 0):
-                
                 sim_score = cos(right_feat, left_feat)
-                
-                
                 cost_volT[disp,:,:] = torch.squeeze(sim_score)
-                
-            else:    
+            else:
                 left_shifted = torch.cuda.FloatTensor(1,f,h,w).fill_(0)
                 left_shift = torch.cuda.FloatTensor(1,f,h,disp).fill_(0)
                 left_appended = torch.cat([left_feat,left_shift],3)
-
+                
                 _,f,h_ap,w_ap = left_appended.shape
                 left_shifted[:,:,:,:] = left_appended[:,:,:,disp:w_ap]
-            
                 sim_score = cos(right_feat, left_shifted)                
-                
                 cost_volT[disp,:,:] = torch.squeeze(sim_score)
+                
     print('Done')           
     return cost_volT
 
@@ -389,9 +372,8 @@ def LR_Check(first_output, second_output):
 
 def FillIncons(mask, disp):
 
-    
+    #limit for consistent point search
     max_search = 30
-    
     w = mask.shape[1]
     h = mask.shape[0] 
     
@@ -406,7 +388,6 @@ def FillIncons(mask, disp):
             if(all(np.isnan(disp[curnanh,:]))):
                 #hole line set to 0!
                 disp[curnanh,:] = 0.0
-                
             #all px to the left are NaN
             if(all(np.isnan(disp[curnanh,0:curnanw]))):
                 #go to the right
@@ -415,8 +396,7 @@ def FillIncons(mask, disp):
                 while(np.isnan(disp[curnanh,curw]) and mask[curnanh,curnanw] == 0):
                     curw = curw +1
                     fill = disp[curnanh,curw]
-                disp[curnanh,curnanw] = fill
-                
+                disp[curnanh,curnanw] = fill  
             #else go left
             else:
                 curw = curnanw
@@ -425,7 +405,6 @@ def FillIncons(mask, disp):
                     curw = curw -1
                     fill = disp[curnanh,curw]
                 disp[curnanh,curnanw] = fill 
-    
     #FG
     idcFG = np.argwhere(np.isnan(disp))
     for curnan in range(len(idcFG)):
@@ -443,12 +422,10 @@ def FillIncons(mask, disp):
         r_under = 0
         l_under = 0      
         
-        
         if(curnanw == 0):
             left = 0
         else:
             left = int(disp[curnanh,curnanw-1])
-            
         counter = 0                                    
         while(np.isnan(disp[curnanh,curnanw+counter])):
             counter = counter +1                       
@@ -456,7 +433,6 @@ def FillIncons(mask, disp):
                 right = 0
                 break
             right = disp[curnanh,curnanw+counter]
-        
         counter = 0                                    
         while(np.isnan(disp[curnanh+counter,curnanw])):
             counter = counter +1                       
@@ -464,12 +440,10 @@ def FillIncons(mask, disp):
                 above = 0
                 break       
             above = disp[curnanh+counter,curnanw]
-             
         if(curnanh == 0):
             under = 0
         else:
             under = disp[curnanh-1,curnanw]
-        
         
         counter = 0                                    
         while(np.isnan(disp[curnanh+counter,curnanw+counter])):
@@ -485,8 +459,7 @@ def FillIncons(mask, disp):
         if(curnanh == 0 or curnanw == 0):
             l_under = 0
         else:
-            l_under = disp[curnanh-1,curnanw-1]
-             
+            l_under = disp[curnanh-1,curnanw-1]  
         
         counter = 0      
         while(np.isnan(disp[curnanh+counter,curnanw-counter])):
@@ -506,7 +479,6 @@ def FillIncons(mask, disp):
         
         fill = np.median([left,right,above,under,r_above,l_above,r_under,l_under])
         disp[curnanh,curnanw] = fill
-
     return disp
 
 
@@ -586,9 +558,9 @@ def TestImage(fn_left, fn_right, max_disp, im_to_save, filtered = True, lr_check
         cv2.imwrite(im_to_save + 'bilat_and_med_mask.png',mask * 255)
 
         disp_filled = FillIncons(mask, disp)
-        writePFM(im_to_save + '_filled.pfm',disp_filled)            
-                    
+        writePFM(im_to_save + '_filled.pfm',disp_filled)
     return disp_map, disp
+
 
 if __name__ == "__main__":
     main()
