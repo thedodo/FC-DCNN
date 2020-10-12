@@ -41,16 +41,19 @@ If you want to do inference on any rectified image-pair call the *test.py* funct
 #### Example on Middlebury
 Download the Middlebury weights from the link above and put it in the *weights* folder in the root of this repository. Then copy and paste the following: 
 
-```python test.py weights/mb example/im0.png example/im1.png 128 teddy```
+```python test.py weights/mb example/im0.png example/im1.png 140 motorcycle```
 
 *TODO: more graceful error-handling for parameter*
 
 If everything went ok this should produce the following output: 
 
-- teddy.pfm: filtered disparity output of the network
-- teddybilat_and_med_mask.png: calculated foreground/background mask (see paper)
+- motorcycle.pfm: filtered disparity output of the network
+![NW output](./docs/motor_NW.png)
+- motorcycle_and_med_mask.png: calculated foreground/background mask (see paper)
+![Mask](./docs/motorcyclebilat_and_med_mask.png)
 - teddy_s.pfm: disparity map with removed inconsistencies
+![Disp_s](./docs/Motor_s.png)
 - teddy_filled.pfm: disparity with updated inconsistencies (see paper)
-
+![Disp_filled](./docs/motor_filled.png)
 
 **&#9733;&#9733;&#9733; New version of FC-DCNN with improved EPE and additional trained weights will be made available at [https://github.com/thedodo/fc-dcnn2](https://github.com/thedodo/fc-dcnn2) &#9733;&#9733;&#9733;**
