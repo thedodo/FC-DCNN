@@ -48,12 +48,12 @@ Download the Middlebury weights from the link above and put it in the *weights* 
 If everything went ok this should produce the following output: 
 
 - motorcycle.pfm: filtered disparity output of the network
-<img src="./docs/motor_NW.png" style="width: 25%;"/>
+<img src="./docs/motor_NW.png" style="width: 10%;"/>
 - motorcycle_and_med_mask.png: calculated foreground/background mask (see paper)
-<img src="./docs/motorcyclebilat_and_med_mask.png" style="width: 25%;"/>
+<img src="./docs/motorcyclebilat_and_med_mask.png" style="width: 10%;"/>
 - teddy_s.pfm: disparity map with removed inconsistencies
-<img src="./docs/Motor_s.png" style="width: 25%;"/>
+<img src="./docs/Motor_s.png" style="width: 10%;"/>
 - teddy_filled.pfm: disparity with updated inconsistencies (see paper)
-<img src="./docs/motor_filled.png" style="width: 25%;"/>
+<img src="./docs/motor_filled.png" style="width: 10%;"/>
 
 **&#9733;&#9733;&#9733; New version of FC-DCNN with improved EPE and additional trained weights will be made available at [https://github.com/thedodo/fc-dcnn2](https://github.com/thedodo/fc-dcnn2) &#9733;&#9733;&#9733;**
