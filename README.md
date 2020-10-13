@@ -33,6 +33,10 @@ The code is released under the BSD 2-Clause license. Please cite our paper (link
 [ETH3D](https://drive.google.com/file/d/19QxmKWHNgNnjOUFBPnVgGG3r3mkHY1nW/view?usp=sharing) |
 
 ## Usage
+We use a trainable guided filter for the cost-volume (see [project](http://wuhuikai.me/DeepGuidedFilterProject/). This can be installed via pip.
+
+ ```pip install guided-filter-pytorch```
+
 ### Inference 
 If you want to do inference on any rectified image-pair call the *test.py* function from the root of this repository as follows: 
 
