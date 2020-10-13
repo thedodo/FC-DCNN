@@ -254,9 +254,6 @@ def loadKitti2015():
     return left_list, right_list, disp_list
 
 
-
-
-
 class SiameseBranch(nn.Module):
     def __init__(self,img_ch=1):
         super(SiameseBranch,self).__init__()
