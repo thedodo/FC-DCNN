@@ -58,8 +58,16 @@ For convenience the jupyter-notebooks *fc-dcnn-eval.ipynb* and *fc-dcnn-submit.i
 ### Training
 
 For training yourself call the function *train.py* from the root of this repository. The hyperparameters are stored in a .cfg file. See the example in the config subfolder of this repository.
+The network is called as follows: 
+ ```python train.py path/to/config.cfg```
+ 
+ Example use: 
+ ```python train.py config/train.cfg```
 
-The possible hyperparameters are as follows: 
+Note: Please change the input_folder directory to your local directory.
+The weights are saved into the *save_weights* directory.
+
+#### possible Hyperparameters 
 ```
 - transfer_train: Boolean. If true the according weight must be stored in the weights subfolder
 - dataset: Which dataset you want to train: MB, ETH, KITTI2012 or KITTI2015. If you want to train on your own dataset adapt one of these dataloader functions to fit your need
