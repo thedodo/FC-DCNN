@@ -53,4 +53,27 @@ If everything went ok this should produce the following output:
 - motorcycle_filled.pfm: disparity with updated inconsistencies (see paper)
 ![Disp_filled](./docs/motor_filled.png)
 
+For convenience the jupyter-notebooks *fc-dcnn-eval.ipynb* and *fc-dcnn-submit.ipynb* are available in the jupyter subfolder of this repository. The *fc-dcnn-eval.ipynb* notebook is for use on a single image to try out the network. *fc-dcnn-submit.ipynb* is for batch-use on multiple images in one script for either submission or to get an average error over the whole set (given in EPE).
+
+### Training
+
+For training yourself call the function *train.py* from the root of this repository. The hyperparameters are stored in a .cfg file. See the example in the config subfolder of this repository.
+
+The possible hyperparameters are as follows: 
+```
+- transfer_train: Boolean. If true the according weight must be stored in the weights subfolder
+- dataset: Which dataset you want to train: MB, ETH, KITTI2012 or KITTI2015. If you want to train on your own dataset adapt one of these dataloader functions to fit your need
+- model_name: string used as prefix to save weights 
+- input_folder: folder were the trainings data is stored. If it is one of the pre-trained datasets keep the naming and folder-structure exactly as they are when downloaded
+- batch_size: How many batches (random crops) are used per batch
+- nr_batches: number of batches per iteration
+- nr_epochs: how many epochs the network is trained
+- num_conv_feature_maps: how many feature maps are used per layer. The value for the trained networks is 64. Because of the dense layer structure the network complexity can increase drastically if this is value is increased
+-save_weights: save weights every X epoch. If you want to store the weights of every epoch set this value to 1
+- patch_size: size of the crop for the training data. This is dependent on the perceptive field.
+- r_low and r_high: random offset used for the negative patch creation.
+```
+
+For your convenience the train script is also available as jupyter-notebook as *fc-dcnn-train.ipynb* in the jupyter subfolder.
+
 **&#9733;&#9733;&#9733; New version of FC-DCNN with improved EPE and additional trained weights will be made available at [https://github.com/thedodo/fc-dcnn2](https://github.com/thedodo/fc-dcnn2) &#9733;&#9733;&#9733;**
