@@ -1,0 +1,5 @@
+pytorch=1.2.0
+torchvision
+re
+guided-filter-pytorch
+Pillow==2.2.2
