@@ -34,7 +34,7 @@ The code is released under the BSD 2-Clause license. Please cite our paper (link
 [ETH3D](https://drive.google.com/file/d/19QxmKWHNgNnjOUFBPnVgGG3r3mkHY1nW/view?usp=sharing) |
 
 ## Usage
-We use a trainable guided filter for the cost-volume (see [project](http://wuhuikai.me/DeepGuidedFilterProject/). This can be installed via pip.
+We use a trainable guided filter for the cost-volume (see [project](http://wuhuikai.me/DeepGuidedFilterProject/)). This can be installed via pip.
 
  ```pip install guided-filter-pytorch```
 
@@ -74,7 +74,7 @@ The weights are saved into the *save_weights* directory.
 
 #### possible Hyperparameters 
 ```
-- transfer_train: Boolean. If true the according weight must be stored in the weights subfolder
+- **transfer_train**: Boolean. If true the according weight must be stored in the weights subfolder
 - dataset: Which dataset you want to train: MB, ETH, KITTI2012 or KITTI2015. If you want to train on your own dataset adapt one of these dataloader functions to fit your need
 - model_name: string used as prefix to save weights 
 - input_folder: folder were the trainings data is stored. If it is one of the pre-trained datasets keep the naming and folder-structure exactly as they are when downloaded
