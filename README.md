@@ -70,7 +70,7 @@ The network is called as follows:
  ```python train.py config/train.cfg```
 
 Note: Please change the input_folder directory to your local directory.
-The weights are saved into the *save_weights* directory.
+By default the weights are saved into the *save_weights* directory that is located in the root of this repository.
 
 #### possible Hyperparameters 
 ```
