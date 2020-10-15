@@ -16,6 +16,10 @@ This method has been accepted and will be published at the **ICPR 2020** confere
 A demo of this network is available online in Google Colab. 
 [Demo](https://colab.research.google.com/drive/1i5k-YTCsmQC8IIURBh802oKeyZP_ZSHG)
 
+Demo Video of the MPI dataset: 
+
+[![Watch the video]](https://youtu.be/U70bsypa96g)
+
 The whole project is in pure python 3.6.
 
 This repository contains
