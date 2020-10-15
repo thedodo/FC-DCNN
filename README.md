@@ -18,7 +18,7 @@ A demo of this network is available online in Google Colab.
 
 Demo Video of the MPI dataset: 
 
-[![Watch the video](https://img.youtube.com/vi/U70bsypa96g/maxresdefault.jpg)](https://youtu.be/U70bsypa96g)
+[![Sintel Demo Video](https://img.youtube.com/vi/U70bsypa96g/hqdefault.jpg)](https://youtu.be/U70bsypa96g)
 
 The whole project is in pure python 3.6.
 
