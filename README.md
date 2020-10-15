@@ -50,13 +50,13 @@ Download the Middlebury weights from the link above and put it in the *weights* 
 If everything went ok this should produce the following output: 
 
 - motorcycle.pfm: filtered disparity output of the network
-![NW output](./docs/motor_NW.png)
+![NW output](./docs/motor_NW_small.png)
 - motorcycle_and_med_mask.png: calculated foreground/background mask (see paper)
-![Mask](./docs/motorcyclebilat_and_med_mask.png)
+![Mask](./docs/motorcyclebilat_and_med_mask_small.png)
 - motorcycle_s.pfm: disparity map with removed inconsistencies
-![Disp_s](./docs/motor_s.png)
+![Disp_s](./docs/motor_s_small.png)
 - motorcycle_filled.pfm: disparity with updated inconsistencies (see paper)
-![Disp_filled](./docs/motor_filled.png)
+![Disp_filled](./docs/motor_filled_small.png)
 
 For convenience the jupyter-notebooks *fc-dcnn-eval.ipynb* and *fc-dcnn-submit.ipynb* are available in the jupyter subfolder of this repository. The *fc-dcnn-eval.ipynb* notebook is for use on a single image to try out the network. *fc-dcnn-submit.ipynb* is for batch-use on multiple images in one script for either submission or to get an average error over the whole set (given in EPE).
 
