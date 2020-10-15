@@ -16,7 +16,7 @@ This method has been accepted and will be published at the **ICPR 2020** confere
 A demo of this network is available online in Google Colab. 
 [Demo](https://colab.research.google.com/drive/1i5k-YTCsmQC8IIURBh802oKeyZP_ZSHG)
 
-The whole project is in pure python 3.6. For all required packages see requirements.txt
+The whole project is in pure python 3.6.
 
 This repository contains
 
