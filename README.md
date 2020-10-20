@@ -6,6 +6,8 @@
 ![colab](https://img.shields.io/badge/online-demo-green.svg?style=plastic)
 
 ![Teaser image](./docs/Header.png)
+**&#9733;&#9733;&#9733; New version of FC-DCNN (FC-DCNN2) with improved EPE and additional trained weights is online and can be found at [https://github.com/thedodo/fc-dcnn2](https://github.com/thedodo/fc-dcnn2) &#9733;&#9733;&#9733;**
+
 #### A densely connected neural network for stereo estimation
 Dominik Hirner, Friedrich Fraundorfer
 
@@ -92,5 +94,3 @@ By default the weights are saved into the *save_weights* directory that is locat
 ```
 
 For your convenience the train script is also available as jupyter-notebook as *fc-dcnn-train.ipynb* in the jupyter subfolder.
-
-**&#9733;&#9733;&#9733; New version of FC-DCNN (FC-DCNN2) with improved EPE and additional trained weights is online and can be found at [https://github.com/thedodo/fc-dcnn2](https://github.com/thedodo/fc-dcnn2) &#9733;&#9733;&#9733;**
